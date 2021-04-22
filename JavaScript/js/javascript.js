@@ -1,7 +1,7 @@
 var callBackGetSuccess = function (data) {
 
 console.log(data);
-for (let i = 0; i <= 6; i++) 
+for (var i = 0; i <= 6; i++) 
     {
     forecastDay(document.getElementById("temp"+i), document.getElementById("date"+i), data.days[i].datetime, data.days[i].temp);
         iconWeather("image"+i, data.days[i].icon);
@@ -10,7 +10,7 @@ for (let i = 0; i <= 6; i++)
 }
 
 function buttonClickGET() {
-    let loc = document.getElementById("queryLoc").value;
+    var loc = document.getElementById("queryLoc").value;
     var url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/" + loc + "?unitGroup=metric&key=R3CLVF6WWG8ZHAY2Z38T8NIUW&include=fcst%2Ccurrent"
 
     $.get(url, callBackGetSuccess).done(function () {
@@ -52,8 +52,8 @@ function iconWeather(imageToChange, iconToPut) {
 }
 function iconMoon(imageToDisplay, moonphase){
     
-    for (let y = 0; y <= 10; y++) {
-        let moonToDisplay = 0;
+    for (var y = 0; y <= 10; y++) {
+        var moonToDisplay = 0;
      
 
         
@@ -68,18 +68,18 @@ function iconMoon(imageToDisplay, moonphase){
 }
 
 function forecastDay(TempToDisplay, DateDayMonth, DateTime, Temp){   
-    let temp = TempToDisplay;
-    let date = DateDayMonth;
-    let str = DateTime
-    let day = str.substring(8, 10);
-    let month = str.substring(5, 7);
+    var temp = TempToDisplay;
+    var date = DateDayMonth;
+    var str = DateTime
+    var day = str.substring(8, 10);
+    var month = str.substring(5, 7);
     DateDayMonth.innerHTML = day + "/" + month
     TempToDisplay.innerHTML = Temp + "°C"
 }
 
 function dateHeure(){
     var ladate=new Date()
-    let DH = document.getElementById("dateHeure");
+    var DH = document.getElementById("dateHeure");
     DH.innerhtml = ladate.getDate()+"/"+(ladate.getMonth()+1)+"/"+ladate.getFullYear();
     console.log
 }
