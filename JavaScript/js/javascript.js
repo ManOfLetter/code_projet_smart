@@ -3,7 +3,7 @@ var callBackGetSuccess = function (data) {
 console.log(data);
 for (var i = 0; i <= 6; i++) 
     {
-    forecastDay(document.getElementById("temp"+i), document.getElementById("date"+i), data.days[i].datetime, data.days[i].temp);
+    forecastDay(document.getElementById("tempmin"+i),document.getElementById("tempmax"+i),document.getElementById("windspeed"+i), document.getElementById("date"+i), data.days[i].datetime, data.days[i].tempmax, data.days[i].tempmin, data.days[i].tempmax, data.days[i].windspeed );
         iconWeather("image"+i, data.days[i].icon);
         //iconMoon("moon"+i, data.days[i].moonphase);
     }
@@ -51,30 +51,36 @@ function iconWeather(imageToChange, iconToPut) {
     }
 }
 function iconMoon(imageToDisplay, moonphase){
-    
-    for (var y = 0; y <= 10; y++) {
-        var moonToDisplay = 0;
-     
+    var moonToDisplay = moonphase*100;
+    var numberofthemoon =1;
+    var x=0;
+    console.log(moonToDisplay)
 
+    for (x; x <= 100; x = x+4) {
         
-    }
-    switch (moonphase) {
-        case "1":
-            document.getElementById(imageToDisplay).setAttribute('src', "icon/1.png");
+        if(moonToDisplay >= x && moonToDisplay < x+4)
+        {
+            console.log("dans if :"+numberofthemoon)
+            document.getElementById(imageToDisplay).setAttribute('src', "icon/moon/"+numberofthemoon+".png");
+            console.log("icon/moon/"+numberofthemoon+".png")
             break;
-        default:
-            console.log(`Pas d'icone a afficher`);
+        }
+        else
+        {
+            console.log("dans else :"+numberofthemoon)
+            numberofthemoon++
+        }
     }
 }
 
-function forecastDay(TempToDisplay, DateDayMonth, DateTime, Temp){   
-    var temp = TempToDisplay;
-    var date = DateDayMonth;
+function forecastDay(TempMinToDisplay,TempMaxToDisplay,WindSpeedToDisplay, DateDayMonth, DateTime, TempMax, TempMin, WindSpeed){   
     var str = DateTime
     var day = str.substring(8, 10);
     var month = str.substring(5, 7);
     DateDayMonth.innerHTML = day + "/" + month
-    TempToDisplay.innerHTML = Temp + "°C"
+    TempMinToDisplay.innerHTML = "Temp Max " + TempMax + "°C"
+    TempMaxToDisplay.innerHTML = "Temp Min " + TempMin + "°C"
+    WindSpeedToDisplay.innerHTML = "Vent " + WindSpeed + " km/h"
 }
 
 function dateHeure(){
