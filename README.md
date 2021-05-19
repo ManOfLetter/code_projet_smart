@@ -1,6 +1,6 @@
 Voici le Git pour les différents codes de notre projet 3D Lunar Phase Clock.
 
-Les sossiers css, js et icons sont les dossiers permettant la structure du site accueillant nos différentes données et la fonction Smart
+Les dossiers css, js et icons sont les dossiers permettant la structure du site accueillant nos différentes données et la fonction Smart
 
 <strong>4 pages HTML sont présentes :</strong>
 
